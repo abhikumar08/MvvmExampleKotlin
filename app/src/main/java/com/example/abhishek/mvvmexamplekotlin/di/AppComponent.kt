@@ -1,8 +1,8 @@
 package com.example.abhishek.mvvmexamplekotlin.di
 
 import com.example.abhishek.mvvmexamplekotlin.App
-import com.example.abhishek.mvvmexamplekotlin.posts.PostListViewModel
-import com.example.abhishek.mvvmexamplekotlin.posts.PostsActivity
+import com.example.abhishek.mvvmexamplekotlin.ui.posts.PostListViewModel
+import com.example.abhishek.mvvmexamplekotlin.ui.posts.PostsActivity
 import dagger.Component
 import javax.inject.Singleton
 

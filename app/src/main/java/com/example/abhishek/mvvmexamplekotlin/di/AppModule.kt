@@ -6,7 +6,7 @@ import android.content.Context
 import com.example.abhishek.mvvmexamplekotlin.common.BASE_URL
 import com.example.abhishek.mvvmexamplekotlin.database.PostsDb
 import com.example.abhishek.mvvmexamplekotlin.network.PostsApi
-import com.example.abhishek.mvvmexamplekotlin.model.PostsDao
+import com.example.abhishek.mvvmexamplekotlin.database.PostsDao
 import dagger.Module
 import dagger.Provides
 import io.reactivex.schedulers.Schedulers

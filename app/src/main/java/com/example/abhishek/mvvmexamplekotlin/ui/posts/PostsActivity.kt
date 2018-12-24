@@ -1,4 +1,4 @@
-package com.example.abhishek.mvvmexamplekotlin.posts
+package com.example.abhishek.mvvmexamplekotlin.ui.posts
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders

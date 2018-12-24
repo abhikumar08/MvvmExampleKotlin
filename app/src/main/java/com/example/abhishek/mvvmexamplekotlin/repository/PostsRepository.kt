@@ -1,8 +1,7 @@
 package com.example.abhishek.mvvmexamplekotlin.repository
 
-import com.example.abhishek.mvvmexamplekotlin.database.PostsDb
 import com.example.abhishek.mvvmexamplekotlin.model.Post
-import com.example.abhishek.mvvmexamplekotlin.model.PostsDao
+import com.example.abhishek.mvvmexamplekotlin.database.PostsDao
 import com.example.abhishek.mvvmexamplekotlin.network.PostsApi
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
@@ -10,7 +9,6 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class PostsRepository @Inject constructor(
-    private val db: PostsDb,
     private val postsApi: PostsApi,
     private val postsDao: PostsDao
 ) {

@@ -1,4 +1,4 @@
-package com.example.abhishek.mvvmexamplekotlin.posts
+package com.example.abhishek.mvvmexamplekotlin.ui.posts
 
 import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
@@ -9,7 +9,7 @@ import com.example.abhishek.mvvmexamplekotlin.databinding.ItemPostBinding
 import com.example.abhishek.mvvmexamplekotlin.base.BaseRecyclerViewAdapter
 import com.example.abhishek.mvvmexamplekotlin.model.Post
 
-class PostListAdapter(var postList: List<Post>) :
+class PostListAdapter(postList: List<Post>) :
     BaseRecyclerViewAdapter<Post, PostListAdapter.ViewHolder>(postList) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

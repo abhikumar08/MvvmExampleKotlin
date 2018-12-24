@@ -5,7 +5,7 @@
     <data>
         <variable
                 name="viewModel"
-                type="com.example.abhishek.mvvmexamplekotlin.posts.PostViewModel" />
+                type="com.example.abhishek.mvvmexamplekotlin.ui.posts.PostViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout
