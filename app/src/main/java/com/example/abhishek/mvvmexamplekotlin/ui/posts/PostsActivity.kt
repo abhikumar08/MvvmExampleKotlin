@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.example.abhishek.mvvmexamplekotlin.R
 import com.example.abhishek.mvvmexamplekotlin.databinding.ActivityPostsBinding
-import com.example.abhishek.mvvmexamplekotlin.App
+import com.example.abhishek.mvvmexamplekotlin.di.Injector
 import com.example.abhishek.mvvmexamplekotlin.utils.ViewModelFactory
 
 class PostsActivity : AppCompatActivity() {
@@ -20,7 +20,7 @@ class PostsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        App.instance?.appComponent?.inject(this)
+        Injector.appComponent.inject(this)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_posts)
         binding.postList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         viewModel = ViewModelProviders.of(this, ViewModelFactory(this)).get(PostListViewModel::class.java)

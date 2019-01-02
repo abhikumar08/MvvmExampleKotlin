@@ -2,9 +2,9 @@ package com.example.abhishek.mvvmexamplekotlin.ui.posts
 
 import android.arch.lifecycle.MutableLiveData
 import android.view.View
-import com.example.abhishek.mvvmexamplekotlin.App
 import com.example.abhishek.mvvmexamplekotlin.R
 import com.example.abhishek.mvvmexamplekotlin.base.BaseViewModel
+import com.example.abhishek.mvvmexamplekotlin.di.Injector
 import com.example.abhishek.mvvmexamplekotlin.model.Post
 import com.example.abhishek.mvvmexamplekotlin.repository.PostsRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -29,7 +29,7 @@ class PostListViewModel : BaseViewModel() {
     }
 
     init {
-        App.instance?.appComponent?.inject(this)
+       Injector.appComponent.inject(this)
     }
 
     private fun loadPosts() {

@@ -8,12 +8,18 @@ import javax.inject.Singleton
 
 
 @Singleton
-@Component(modules = arrayOf(AppModule::class))
+@Component(modules = [AppModule::class])
 interface AppComponent {
-
 
     fun inject(app: App)
     fun inject(app: PostListViewModel)
     fun inject(postsActivity: PostsActivity)
+
+    @Component.Builder
+    interface Builder {
+        fun build(): AppComponent
+
+        fun appModule(appModule: AppModule): Builder
+    }
 
 }
