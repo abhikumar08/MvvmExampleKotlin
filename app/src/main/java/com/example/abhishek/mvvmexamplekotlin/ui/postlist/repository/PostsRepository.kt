@@ -1,15 +1,15 @@
-package com.example.abhishek.mvvmexamplekotlin.repository
+package com.example.abhishek.mvvmexamplekotlin.ui.postlist.repository
 
-import com.example.abhishek.mvvmexamplekotlin.model.Post
 import com.example.abhishek.mvvmexamplekotlin.database.PostsDao
-import com.example.abhishek.mvvmexamplekotlin.network.PostsApi
+import com.example.abhishek.mvvmexamplekotlin.model.Post
+import com.example.abhishek.mvvmexamplekotlin.network.Api
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 import javax.inject.Inject
 
 class PostsRepository @Inject constructor(
-    private val postsApi: PostsApi,
+    private val api: Api,
     private val postsDao: PostsDao
 ) {
 
@@ -23,7 +23,7 @@ class PostsRepository @Inject constructor(
     }
 
     fun getPostsFromApi(): Observable<List<Post>> {
-        return postsApi.getPosts()
+        return api.getPosts()
             .doOnNext {
                 Timber.d("Dispatching ${it.size} users from API...")
                 storePostInDb(it)

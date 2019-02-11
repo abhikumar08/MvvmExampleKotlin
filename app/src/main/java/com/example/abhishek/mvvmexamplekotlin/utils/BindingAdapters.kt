@@ -1,16 +1,16 @@
 package com.example.abhishek.mvvmexamplekotlin.utils
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.Observer
-import android.databinding.BindingAdapter
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.RecyclerView
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import androidx.databinding.BindingAdapter
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
 import com.example.abhishek.mvvmexamplekotlin.utils.extensions.getParentActivity
 
 @BindingAdapter("adapter")
-fun setAdapter(view: RecyclerView, adapter: RecyclerView.Adapter<*>) {
+fun setAdapter(view: androidx.recyclerview.widget.RecyclerView, adapter: androidx.recyclerview.widget.RecyclerView.Adapter<*>) {
     view.adapter = adapter
 }
 

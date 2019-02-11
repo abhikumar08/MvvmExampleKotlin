@@ -1,7 +1,7 @@
-package com.example.abhishek.mvvmexamplekotlin.ui.posts
+package com.example.abhishek.mvvmexamplekotlin.ui.postlist.postitem
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.abhishek.mvvmexamplekotlin.model.Post
 
 class PostViewModel : ViewModel() {

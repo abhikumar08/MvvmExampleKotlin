@@ -1,11 +1,11 @@
 package com.example.abhishek.mvvmexamplekotlin.di
 
 import android.app.Application
-import android.arch.persistence.room.Room
+import androidx.room.Room
 import android.content.Context
 import com.example.abhishek.mvvmexamplekotlin.common.BASE_URL
 import com.example.abhishek.mvvmexamplekotlin.database.PostsDb
-import com.example.abhishek.mvvmexamplekotlin.network.PostsApi
+import com.example.abhishek.mvvmexamplekotlin.network.Api
 import com.example.abhishek.mvvmexamplekotlin.database.PostsDao
 import dagger.Module
 import dagger.Provides
@@ -20,8 +20,8 @@ class AppModule(internal var application: Application){
 
     @Provides
     @Singleton
-    internal fun providesPostRetrofitService(retrofit: Retrofit): PostsApi {
-        return retrofit.create(PostsApi::class.java)
+    internal fun providesPostRetrofitService(retrofit: Retrofit): Api {
+        return retrofit.create(Api::class.java)
     }
 
     @Provides

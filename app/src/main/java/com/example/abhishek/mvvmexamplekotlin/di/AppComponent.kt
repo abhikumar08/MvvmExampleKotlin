@@ -1,8 +1,9 @@
 package com.example.abhishek.mvvmexamplekotlin.di
 
 import com.example.abhishek.mvvmexamplekotlin.App
-import com.example.abhishek.mvvmexamplekotlin.ui.posts.PostListViewModel
-import com.example.abhishek.mvvmexamplekotlin.ui.posts.PostsActivity
+import com.example.abhishek.mvvmexamplekotlin.ui.NavHostActivity
+import com.example.abhishek.mvvmexamplekotlin.ui.postdetail.PostDetailViewModel
+import com.example.abhishek.mvvmexamplekotlin.ui.postlist.PostsViewModel
 import dagger.Component
 import javax.inject.Singleton
 
@@ -12,8 +13,9 @@ import javax.inject.Singleton
 interface AppComponent {
 
     fun inject(app: App)
-    fun inject(app: PostListViewModel)
-    fun inject(postsActivity: PostsActivity)
+    fun inject(navHostActivity: NavHostActivity)
+    fun inject(postsViewModel: PostsViewModel)
+    fun inject(postDetailViewModel: PostDetailViewModel)
 
     @Component.Builder
     interface Builder {

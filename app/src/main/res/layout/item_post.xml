@@ -5,10 +5,10 @@
     <data>
         <variable
                 name="viewModel"
-                type="com.example.abhishek.mvvmexamplekotlin.ui.posts.PostViewModel" />
+                type="com.example.abhishek.mvvmexamplekotlin.ui.postlist.postitem.PostViewModel"/>
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="16dp"
@@ -34,5 +34,5 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/post_title" app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginBottom="8dp"/>
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
