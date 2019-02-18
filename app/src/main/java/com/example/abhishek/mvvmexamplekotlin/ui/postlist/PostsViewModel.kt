@@ -86,6 +86,7 @@ class PostsViewModel : ViewModel() {
   override fun onCleared() {
     super.onCleared()
     networkSubscription.dispose()
-    dbSubscription.dispose()
+    if (::dbSubscription.isInitialized)
+      dbSubscription.dispose()
   }
 }
