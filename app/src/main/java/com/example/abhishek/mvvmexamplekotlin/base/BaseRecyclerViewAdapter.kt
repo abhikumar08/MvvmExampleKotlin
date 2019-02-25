@@ -5,23 +5,23 @@ package com.example.abhishek.mvvmexamplekotlin.base
  */
 
 abstract class BaseRecyclerViewAdapter<T, V : androidx.recyclerview.widget.RecyclerView.ViewHolder>(
-    protected var mList: List<T>?
+  protected var mList: List<T>?
 ) : androidx.recyclerview.widget.RecyclerView.Adapter<V>() {
 
-    override fun getItemCount(): Int {
-        mList?.let { return it.size }
-        return 0
-    }
+  override fun getItemCount(): Int {
+    mList?.let { return it.size }
+    return 0
+  }
 
-    fun setData(mList: List<T>) {
-        this.mList = mList
-        notifyDataSetChanged()
-    }
+  fun setData(mList: List<T>) {
+    this.mList = mList
+    notifyDataSetChanged()
+  }
 
-    fun getItem(position: Int): T? {
-        mList?.let {
-            return it.getOrNull(position)
-        }
-        return null
+  fun getItem(position: Int): T? {
+    mList?.let {
+      return it.getOrNull(position)
     }
+    return null
+  }
 }

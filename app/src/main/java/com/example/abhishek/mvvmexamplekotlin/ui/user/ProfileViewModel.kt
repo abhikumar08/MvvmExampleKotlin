@@ -1,6 +1,5 @@
 package com.example.abhishek.mvvmexamplekotlin.ui.user
 
-import android.app.Application
 import android.content.Context
 import android.view.View
 import androidx.lifecycle.MutableLiveData
@@ -35,8 +34,11 @@ class ProfileViewModel : ViewModel() {
   }
 
   fun loadProfile(userId: Int) {
-    networkSubscription = userRepository.getUserDetail(userId).subscribeOn(
-        Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+    networkSubscription = userRepository.getUserDetail(userId)
+        .subscribeOn(
+            Schedulers.io()
+        )
+        .observeOn(AndroidSchedulers.mainThread())
         .doOnSubscribe { showLoading() }
         .doOnTerminate { hideLoading() }
         .subscribe({ user ->
@@ -68,6 +70,5 @@ class ProfileViewModel : ViewModel() {
     super.onCleared()
     networkSubscription.dispose()
   }
-
 
 }

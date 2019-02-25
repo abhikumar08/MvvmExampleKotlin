@@ -24,13 +24,15 @@ class PostDetailFragment : Fragment() {
 
   private val post by lazy {
     arguments?.let {
-      PostDetailFragmentArgs.fromBundle(it).post
+      PostDetailFragmentArgs.fromBundle(it)
+          .post
     }
   }
 
   override fun onCreateView(
-      inflater: LayoutInflater, container: ViewGroup?,
-      savedInstanceState: Bundle?
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
   ): View? {
     binding = DataBindingUtil.inflate(
         inflater, R.layout.post_detail_fragment, container, false
@@ -41,7 +43,8 @@ class PostDetailFragment : Fragment() {
 
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
-    viewModel = ViewModelProviders.of(this).get(PostDetailViewModel::class.java)
+    viewModel = ViewModelProviders.of(this)
+        .get(PostDetailViewModel::class.java)
     viewModel.post.value = this.post
     binding.viewModel = viewModel
     binding.buttonViewAuthor.setOnClickListener {
@@ -60,6 +63,5 @@ class PostDetailFragment : Fragment() {
   interface PostDetailFragmentInterFace {
     fun onViewAuthorClicked(userId: Int)
   }
-
 
 }

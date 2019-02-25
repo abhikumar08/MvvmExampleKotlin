@@ -7,38 +7,41 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Post(
-    val userId: Int?,
-    @field:PrimaryKey
-    val id: Int,
-    val title: String?,
-    val body: String?
+  val userId: Int?,
+  @field:PrimaryKey
+  val id: Int,
+  val title: String?,
+  val body: String?
 ) : Parcelable {
-    constructor(parcel: Parcel) : this(
-        parcel.readValue(Int::class.java.classLoader) as? Int,
-        parcel.readInt(),
-        parcel.readString(),
-        parcel.readString()
-    )
+  constructor(parcel: Parcel) : this(
+      parcel.readValue(Int::class.java.classLoader) as? Int,
+      parcel.readInt(),
+      parcel.readString(),
+      parcel.readString()
+  )
 
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeValue(userId)
-        parcel.writeInt(id)
-        parcel.writeString(title)
-        parcel.writeString(body)
+  override fun writeToParcel(
+    parcel: Parcel,
+    flags: Int
+  ) {
+    parcel.writeValue(userId)
+    parcel.writeInt(id)
+    parcel.writeString(title)
+    parcel.writeString(body)
+  }
+
+  override fun describeContents(): Int {
+    return 0
+  }
+
+  companion object CREATOR : Parcelable.Creator<Post> {
+    override fun createFromParcel(parcel: Parcel): Post {
+      return Post(parcel)
     }
 
-    override fun describeContents(): Int {
-        return 0
+    override fun newArray(size: Int): Array<Post?> {
+      return arrayOfNulls(size)
     }
-
-    companion object CREATOR : Parcelable.Creator<Post> {
-        override fun createFromParcel(parcel: Parcel): Post {
-            return Post(parcel)
-        }
-
-        override fun newArray(size: Int): Array<Post?> {
-            return arrayOfNulls(size)
-        }
-    }
+  }
 
 }

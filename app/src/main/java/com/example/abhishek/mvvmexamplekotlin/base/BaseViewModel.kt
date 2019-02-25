@@ -7,5 +7,4 @@ abstract class BaseViewModel : ViewModel() {
 //    val injectorComponent: AppComponent =
 //        DaggerViewModelInjectorComponent.builder().application(AppModule).build()
 
-
 }

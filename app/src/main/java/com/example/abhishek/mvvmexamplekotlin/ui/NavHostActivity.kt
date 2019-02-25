@@ -12,8 +12,9 @@ import com.example.abhishek.mvvmexamplekotlin.ui.postdetail.PostDetailFragmentDi
 import com.example.abhishek.mvvmexamplekotlin.ui.postlist.PostsFragment
 import com.example.abhishek.mvvmexamplekotlin.ui.postlist.PostsFragmentDirections
 
-class NavHostActivity : AppCompatActivity(), PostsFragment.PostsFragmentInterface, PostDetailFragmentInterFace {
-
+class NavHostActivity : AppCompatActivity(),
+    PostsFragment.PostsFragmentInterface,
+    PostDetailFragmentInterFace {
 
   private lateinit var navController: NavController
 
@@ -25,7 +26,6 @@ class NavHostActivity : AppCompatActivity(), PostsFragment.PostsFragmentInterfac
     setupActionBarWithNavController(navController)
   }
 
-
   override fun onSupportNavigateUp(): Boolean {
     return findNavController(R.id.nav_host_fragment).navigateUp()
   }
@@ -36,6 +36,7 @@ class NavHostActivity : AppCompatActivity(), PostsFragment.PostsFragmentInterfac
 
   override fun onViewAuthorClicked(userId: Int) {
     navController.navigate(
-        PostDetailFragmentDirections.actionPostDetailFragmentToProfileFragment(userId))
+        PostDetailFragmentDirections.actionPostDetailFragmentToProfileFragment(userId)
+    )
   }
 }

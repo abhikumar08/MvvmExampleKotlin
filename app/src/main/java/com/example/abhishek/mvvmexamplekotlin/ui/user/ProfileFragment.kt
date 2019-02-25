@@ -20,21 +20,24 @@ class ProfileFragment : Fragment() {
 
   private val userId by lazy {
     arguments?.let {
-      ProfileFragmentArgs.fromBundle(it).userId
+      ProfileFragmentArgs.fromBundle(it)
+          .userId
     }
   }
 
   override fun onCreateView(
-      inflater: LayoutInflater, container: ViewGroup?,
-      savedInstanceState: Bundle?
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
   ): View? {
     binding = DataBindingUtil.inflate(inflater, R.layout.profile_fragment, container, false)
-    return inflater.inflate(R.layout.profile_fragment, container, false)
+    return binding.root
   }
 
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
-    viewModel = ViewModelProviders.of(this).get(ProfileViewModel::class.java)
+    viewModel = ViewModelProviders.of(this)
+        .get(ProfileViewModel::class.java)
     binding.viewModel = viewModel
     userId?.let {
       viewModel.loadProfile(it)

@@ -14,79 +14,79 @@ import javax.inject.Inject
 
 class PostsViewModel : ViewModel() {
 
-  @Inject
-  lateinit var postsRepository: PostsRepository
+    @Inject
+    lateinit var postsRepository: PostsRepository
 
-  private lateinit var networkSubscription: Disposable
-  private lateinit var dbSubscription: Disposable
+    private lateinit var networkSubscription: Disposable
+    private lateinit var dbSubscription: Disposable
 
-  val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
-  val buttonVisibility: MutableLiveData<Int> = MutableLiveData()
-  val errorMessage: MutableLiveData<Int> = MutableLiveData()
-  val posts: MutableLiveData<List<Post>> = MutableLiveData()
-  val errorClickListener = View.OnClickListener {
-    loadPosts()
-    buttonVisibility.value = View.GONE
-  }
+    val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
+    val buttonVisibility: MutableLiveData<Int> = MutableLiveData()
+    val errorMessage: MutableLiveData<Int> = MutableLiveData()
+    val posts: MutableLiveData<List<Post>> = MutableLiveData()
+    val errorClickListener = View.OnClickListener {
+        loadPosts()
+        buttonVisibility.value = View.GONE
+    }
 
-  init {
-    Injector.appComponent.inject(this)
-  }
+    init {
+        Injector.appComponent.inject(this)
+    }
 
-  private fun loadPosts() {
+    private fun loadPosts() {
 
-    networkSubscription = postsRepository.getPostsFromApi().subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
-        .doOnSubscribe { showLoading() }
-        .doOnTerminate { hideLoading() }
-        .subscribe(
-            { postList -> onPostsSuccess(postList) },
-            { onPostsError() }
-        )
+        networkSubscription = postsRepository.getPostsFromApi().subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { showLoading() }
+            .doOnTerminate { hideLoading() }
+            .subscribe(
+                { postList -> onPostsSuccess(postList) },
+                { onPostsError() }
+            )
 
-  }
+    }
 
-  private fun hideLoading() {
-    loadingVisibility.value = View.GONE
-  }
+    private fun hideLoading() {
+        loadingVisibility.value = View.GONE
+    }
 
-  private fun showLoading() {
-    loadingVisibility.value = View.VISIBLE
-    errorMessage.value = null
-  }
+    private fun showLoading() {
+        loadingVisibility.value = View.VISIBLE
+        errorMessage.value = null
+    }
 
-  private fun onPostsError() {
-    dbSubscription = postsRepository.getPostsFromDb()
-        .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
-        .doOnSubscribe {}
-        .doOnTerminate {}
-        .subscribe(
-            { postList ->
-              onPostsFetchedFromDb(postList)
-            }, {
-          onErrorFetchingFromDb()
-        }
-        )
-  }
+    private fun onPostsError() {
+        dbSubscription = postsRepository.getPostsFromDb()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe {}
+            .doOnTerminate {}
+            .subscribe(
+                { postList ->
+                    onPostsFetchedFromDb(postList)
+                }, {
+                    onErrorFetchingFromDb()
+                }
+            )
+    }
 
-  private fun onPostsSuccess(postList: List<Post>) {
-    postsRepository.storePostInDb(postList)
-    posts.value = postList
-  }
+    private fun onPostsSuccess(postList: List<Post>) {
+        postsRepository.storePostInDb(postList)
+        posts.value = postList
+    }
 
-  private fun onPostsFetchedFromDb(postList: List<Post>) {
-    posts.value = postList
-  }
+    private fun onPostsFetchedFromDb(postList: List<Post>) {
+        posts.value = postList
+    }
 
-  private fun onErrorFetchingFromDb() {
-    errorMessage.value = R.string.post_error
-  }
+    private fun onErrorFetchingFromDb() {
+        errorMessage.value = R.string.post_error
+    }
 
-  override fun onCleared() {
-    super.onCleared()
-    networkSubscription.dispose()
-    if (::dbSubscription.isInitialized)
-      dbSubscription.dispose()
-  }
+    override fun onCleared() {
+        super.onCleared()
+        networkSubscription.dispose()
+        if (::dbSubscription.isInitialized)
+            dbSubscription.dispose()
+    }
 }

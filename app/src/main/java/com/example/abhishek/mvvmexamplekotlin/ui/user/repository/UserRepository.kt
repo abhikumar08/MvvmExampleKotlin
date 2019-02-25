@@ -8,11 +8,11 @@ import javax.inject.Inject
 
 class UserRepository @Inject constructor(private val api: Api) {
 
-    fun getUserDetail(id: Int): Observable<User> {
-        return api.getUserDetail(id)
-            .doOnNext {
-                Timber.d("Dispatching user detail of ${it.id} from API...")
+  fun getUserDetail(id: Int): Observable<User> {
+    return api.getUserDetail(id)
+        .doOnNext {
+          Timber.d("Dispatching user detail of ${it.id} from API...")
 
-            }
-    }
+        }
+  }
 }
